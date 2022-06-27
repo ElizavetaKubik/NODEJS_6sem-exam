@@ -1,0 +1,18 @@
+//13.	Разработка HTTP-сервера в Node.js. Пересылка файла в ответе (download). Пример. Тестирование с помощью браузера.
+
+const http = require("http");
+const fs = require("fs");
+
+http
+  .createServer((request, response) => {
+    console.log(`Запрошенный адрес: ${request.url}`);
+
+    const filePath = request.url.substr(1);
+    fs.readFile(filePath, function (error, data) {
+      if (error) {
+        response.statusCode = 404;
+        response.end("Resourse not found!");
+      } else response.end(data);
+    });
+  })
+  .listen(3000);

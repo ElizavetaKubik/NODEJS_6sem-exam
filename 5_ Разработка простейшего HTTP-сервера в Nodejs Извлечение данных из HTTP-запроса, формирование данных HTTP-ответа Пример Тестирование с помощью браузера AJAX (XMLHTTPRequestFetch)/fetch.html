@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fetch</title>
+  </head>
+  <script>
+    function get() {
+      fetch("/req")
+        .then(function (res) {
+          return res.text();
+        })
+        .then(function (data) {
+          document.body.innerHTML += "fetch " + data;
+        });
+    }
+  </script>
+  <body onload="get()"></body>
+</html>

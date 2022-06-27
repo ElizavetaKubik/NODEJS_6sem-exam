@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fetch</title>
+  </head>
+  <script>
+    function req() {
+      var a = document.getElementById("a");
+      var b = document.getElementById("b");
+      fetch("http://localhost:3000/req", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          a: document.getElementById("a").value,
+          b: document.getElementById("b").value,
+        }),
+      });
+    }
+  </script>
+  <body>
+    <form method="POST">
+      <input type="text" id="a" />
+      <input type="text" id="b" />
+      <button onclick="req()">req</button>
+    </form>
+  </body>
+</html>
